@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2022 at 12:26 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Generation Time: Sep 14, 2022 at 09:11 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,14 @@ CREATE TABLE `branch` (
   `Status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`Branch_ID`, `Branch_Name`, `Description`, `Status`) VALUES
+(1, 'Science', 'PUC science', 'active'),
+(2, 'Commerce', 'PUC commerce', 'active');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +55,16 @@ CREATE TABLE `br_details` (
   `Description` varchar(50) NOT NULL,
   `Status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `br_details`
+--
+
+INSERT INTO `br_details` (`Br_Details_ID`, `Branch_ID`, `Br_Details_Name`, `Description`, `Status`) VALUES
+(1, 1, 'PCMB', 'PUC science', 'active'),
+(2, 1, 'PCMC', 'PUC  science', 'active'),
+(3, 2, 'SEBA', 'PUC commerce', 'active'),
+(4, 2, 'CEBA', 'PUC commerce', 'active');
 
 -- --------------------------------------------------------
 
@@ -75,13 +93,7 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`Fac_ID`, `Fname`, `Lname`, `Phone_No`, `Email_ID`, `Status`, `Gender`, `Qualification`, `password`, `Add_1`, `Add_2`, `Pincode`, `url`) VALUES
-(1, 'Ram', 'R', '9876543211', 'ram@gmail.com', 'working', 'm', 'BA', 'pass', '', '', 0, ''),
-(7, 'cc', 'cc', '2222', 'c@gmail.com', 'cc', '', 'B.Sc/M.Sc/B.Ed', 'password', '', '', 0, ''),
-(8, 'kkkk', 'k', '000', 'k@gmail.com', 'k', 'm', 'B.Sc/M.Sc/B.Ed', 'password', 'kkkkk', 'lm', 0, '../img/faculty/000.JPG'),
-(9, 'Akash', 'D', '1', 'c@gmail.com', 'a', 'm', 'B.Sc/M.Sc/B.Ed', '12345', 'awww', 'awww', 1, '../img/faculty/1.'),
-(11, 'ab', 'ab', '1', 'ab@gmail.com', 'ab', 'f', 'B.Sc/M.Sc/B.Ed', 'password', 'ab', 'ab', 1, ''),
-(13, 'ammm', 'D', '97', 'c@gmail.com', 'a', 'f', 'B.Sc/M.Sc/B.Ed', 'password', 'ammm', 'maaa', 977, '../img/faculty/97.'),
-(14, 'zz', 'zz', '2', 'z@gmail.com', 'z', 'f', 'B.Sc/M.Sc/B.Ed', 'password', 'z', 'z', 1, '');
+(16, 'dfgds', 'ghfnd', '988679474265', 'z@gmail.com', 'pendingu67', 'm', 'B.Sc/M.Sc/B.Ed', 'password', 'PRATHEEKSHA,KEREMOOLE, POST SULLIA', '6uy5', 574239, '');
 
 -- --------------------------------------------------------
 
@@ -111,7 +123,6 @@ CREATE TABLE `student` (
   `Gender` varchar(10) NOT NULL,
   `Phone_No` varchar(15) NOT NULL,
   `Email_ID` varchar(25) NOT NULL,
-  `Remarks` text NOT NULL,
   `Reg_No` int(20) NOT NULL,
   `SATS_No` int(11) NOT NULL,
   `Enroll_No` int(11) NOT NULL,
@@ -123,25 +134,16 @@ CREATE TABLE `student` (
   `City` varchar(25) NOT NULL,
   `password` varchar(20) NOT NULL,
   `Pincode` int(10) NOT NULL,
-  `url` varchar(200) NOT NULL
+  `url` varchar(200) NOT NULL,
+  `Remarks` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`Fname`, `Lname`, `Student_ID`, `Roll_No`, `Gender`, `Phone_No`, `Email_ID`, `Remarks`, `Reg_No`, `SATS_No`, `Enroll_No`, `Fathers_Name`, `Mothers_Name`, `DOB`, `Address_1`, `Address_2`, `City`, `password`, `Pincode`, `url`) VALUES
-('2', '2', 9, '2', '2', '1111', 'email@gmail.com', '', 2, 2, 2, 'aaaa', 'aaaa', '0000-00-00', 'abcd', 'abcd', 'abcd', '', 2, ''),
-('1', '1', 10, '2022-09-01', '1', '1111', 'abc@gmail.com', '', 1, 1, 1, 'aaaa', 'aaaa', '2022-09-01', 'abcd', '', 'abcd', '', 1, ''),
-('ss', 'ss', 13, '11', 'f', '1111', 'email@gmail.com', '', 11, 11, 11, 'aaa', 'aaa', '2022-09-05', 'aaa', 'aaa', 'aaa', '', 574314, ''),
-('b', 'b', 14, '0', 'f', '0', 'b@gmail.com', '', 0, 0, 0, 'b', 'b', '2022-09-01', 'b', 'b', 'b', '', 0, ''),
-('d', 'd', 15, '4', 'f', '4', 'd@gmail.com', '', 4, 4, 4, 'd', 'd', '2022-06-08', 'd', 'd', 'd', '', 4, ''),
-('oo', 'oo', 16, '333', 'm', '00000', 'a@gmail.com', '', 333, 333, 333, 'b', 'b', '2022-05-04', 'ooo', 'ooo', 'ooo', '', 0, ''),
-('bbbb', 'bb', 17, '1', 'm', '6666', 'a@gmail.com', '', 1, 1, 1, 'bbbbbb', 'bbbb', '2022-08-07', 'bbbb', 'bbb', 'bbb', '', 555, ''),
-('seetha', 'sm', 18, '2', 'f', '22', 'c@gmail.com', '', 2, 2, 2, 'ss', 'ss', '2022-09-04', 'ss', 'ss', 'ss', '', 22, ''),
-('n', 'n', 19, '6', 'm', '666', 'c@gmail.com', '', 6, 6, 6, 'nn', 'nn', '2022-09-24', 'n', 'n', 'n', '', 6, ''),
-('n', 'n', 20, '6', 'm', '666', 'c@gmail.com', '', 6, 6, 6, 'nn', 'nn', '2022-09-24', 'n', 'n', 'n', '', 6, ''),
-('nnn', 'nnnn', 21, '6555', 'm', '666', 'c@gmail.com', '', 6, 6, 6, 'nn', 'nn', '2022-09-24', 'n', 'n', 'n', 'password', 6, '');
+INSERT INTO `student` (`Fname`, `Lname`, `Student_ID`, `Roll_No`, `Gender`, `Phone_No`, `Email_ID`, `Reg_No`, `SATS_No`, `Enroll_No`, `Fathers_Name`, `Mothers_Name`, `DOB`, `Address_1`, `Address_2`, `City`, `password`, `Pincode`, `url`, `Remarks`) VALUES
+('bob', 'boby', 24, '1', 'm', '9886794742', 'z@gmail.com', 1235, 12, 1213, 'bomb', 'bomby', '2022-09-01', 'PRATHEEKSHA,KEREMOOLE, POST SU', 'ff', 'SULLIA', 'password', 574239, '', '');
 
 -- --------------------------------------------------------
 
@@ -163,9 +165,7 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`Sub_ID`, `Sub_Name`, `Description`, `Br_Details_ID`, `Sub_Code`, `Status`) VALUES
-(2, 'biology', 'science stream', 1, '11', 'sample'),
-(5, 'english', 'eng', 2, 'e1', 'active'),
-(6, 'kannada', 'second language', 4, 'kan21', 'active');
+(9, 'Calculus and Linear ', 'rhbndftye', 1, '21MAT11', 'okkkkkkk');
 
 -- --------------------------------------------------------
 
@@ -245,19 +245,19 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `Branch_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Branch_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `br_details`
 --
 ALTER TABLE `br_details`
-  MODIFY `Br_Details_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Br_Details_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `Fac_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Fac_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `marks`
@@ -269,13 +269,13 @@ ALTER TABLE `marks`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Student_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Student_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `Sub_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Sub_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `test`
